@@ -26,5 +26,10 @@ namespace WebApplication.Models
         }
     
         public virtual DbSet<Company> Companies { get; set; }
+
+        internal void Set(Company newCompany)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

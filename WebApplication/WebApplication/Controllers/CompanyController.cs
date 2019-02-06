@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace WebApplication.Controllers
 {
-    [RoutePrefix("company")]
+    [RoutePrefix("api/companies")]
     public class CompanyController : ApiController
     {
 
@@ -19,14 +19,20 @@ namespace WebApplication.Controllers
         {
             var db = new mytestdbEntities();
 
-            var yada = db.Companies.Where(xx => true);
+            var companies = db.Companies.Where(xx => true);
 
-            foreach(var item in yada)
-            {
-                Debug.WriteLine(item.Name);
-            }
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, companies));
+        }
 
-            return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, yada));
+        [Route]
+        [HttpPost]
+        public IHttpActionResult AddCompany([FromBody]  )
+        {
+            var db = new mytestdbEntities();
+
+            var companies = db.Companies.Where(xx => true);
+
+            return ResponseMessage(Request.CreateResponse(HttpStatusCode.OK, companies));
         }
 
     }
